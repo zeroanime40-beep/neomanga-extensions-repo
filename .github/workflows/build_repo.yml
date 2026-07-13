@@ -26,7 +26,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build Extensions Release Artifacts
-        run: ./gradlew createRepo
+        run: ./gradlew createRepo --no-configuration-cache
 
       # --- الخطوة السحرية الجديدة لنشر الملفات تلقائياً ---
       - name: Deploy to repo branch
