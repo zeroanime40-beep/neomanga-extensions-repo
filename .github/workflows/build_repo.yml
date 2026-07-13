@@ -22,8 +22,16 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Grant Execute Permission to Gradlew
+      - name: Grant Execute Permission to Gradle
         run: chmod +x gradlew
 
       - name: Build Extensions Release Artifacts
         run: ./gradlew assembleRelease
+
+      # --- الخطوة السحرية الجديدة لنشر الملفات تلقائياً ---
+      - name: Deploy to repo branch
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: repo # الفرع السحري الذي سيتم إنشاؤه ونشر الملفات فيه
+          folder: repo # المجلد الافتراضي الذي تتجمع فيه ملفات الـ JSON والـ APKs
+          clean: true
